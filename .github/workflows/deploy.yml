@@ -6,10 +6,18 @@ on:
       - main # Sadece main branch'e push olunca çalışacak
   workflow_dispatch: # Manuel çalıştırmak istersen
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 jobs:
   build-deploy:
     name: Build and Deploy Docusaurus
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
       # 1. Kaynak kodu çek
@@ -33,9 +41,13 @@ jobs:
 
       # 5. GitHub Pages'e deploy et
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
+        uses: actions/deploy-pages@v2
         with:
-          github_token: ${{ secrets.GH_PAT_PAGES }}
-          publish_dir: ./build
-          publish_branch: gh-pages
-          cname: ""
+          artifact_name: github-pages
+          token: ${{ secrets.GH_PAT_PAGES }}
+
+      # Upload the build output as an artifact
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: ./build
