@@ -39,6 +39,3 @@ jobs:
           publish_dir: ./build
           publish_branch: gh-pages
           force_orphan: true
-      # 6. Sunucuyu baslat
-      - name: Start server
-        run: npm run serve
