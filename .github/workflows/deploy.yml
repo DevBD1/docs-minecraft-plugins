@@ -41,13 +41,13 @@ jobs:
 
       # 5. GitHub Pages'e deploy et
       - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v2
+        uses: actions/deploy-pages@v3
         with:
           artifact_name: github-pages
           token: ${{ secrets.GH_PAT_PAGES }}
 
       # Upload the build output as an artifact
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v2
+        uses: actions/upload-pages-artifact@v3
         with:
           path: ./build
