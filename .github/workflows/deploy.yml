@@ -33,9 +33,8 @@ jobs:
 
       # 5. GitHub Pages'e deploy et
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GH_PAT_PAGES }}
-          publish_dir: ./build
-          publish_branch: gh-pages
-          cname: ""
+        run: |
+          git config --global user.email "burakdorman@gmail.com"
+          git config --global user.name "DevBD1"
+          git remote set-url origin https://x-access-token:${{ secrets.GH_PAT_PAGES }}@github.com/DevBD1/docs-minecraft-plugins.git
+          git push origin gh-pages
