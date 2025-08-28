@@ -23,7 +23,7 @@ const config: Config = {
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: "DevBD1",
-  projectName: "minecraft-plugins-docs",
+  projectName: "docs-minecraft-plugins",
 
   deploymentBranch: "gh-pages",
 
