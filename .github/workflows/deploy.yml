@@ -20,7 +20,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: "npm"
 
       # 3. Bağımlılıkları yükle
@@ -38,4 +38,4 @@ jobs:
           github_token: ${{ secrets.GH_PAT_PAGES }}
           publish_dir: ./build
           publish_branch: gh-pages
-          cname: ""
+          force_orphan: true
